@@ -33,7 +33,7 @@ public class UserProvider {
         this.jwtService = jwtService;
     }
 
-
+    /** 유저 피드 조회 **/
     public GetUserFeedRes retrieveUserFeed(int userIdxByJwt, int userIdx) throws BaseException{
         Boolean _isMyFeed = true;
 
@@ -54,7 +54,7 @@ public class UserProvider {
         catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }
-                    }
+    }
 
 
     public GetUserRes getUsersByIdx(int userIdx) throws BaseException{

@@ -19,6 +19,7 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /** 유저 피드 조회 - 유저 정보 **/
     public GetUserInfoRes selectUserInfo(int userIdx){
         String selectUsersInfoQuery =
                 "SELECT u.nickName as nickName,\n" +
@@ -51,6 +52,7 @@ public class UserDao {
                 ), selectUserInfoParam);
     }
 
+    /** 유저 피드 조회 - 유저 게시물 **/
     public List<GetUserPostsRes> selectUserPosts(int userIdx){
         String selectUserPostsQuery =
                 "SELECT p.postIdx as postIdx,\n" +
