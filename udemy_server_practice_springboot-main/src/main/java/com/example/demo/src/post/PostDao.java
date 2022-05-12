@@ -90,4 +90,28 @@ public class PostDao {
                 checkUserExistParams);
 
     }
+
+    /** 게시물 생성 - insertPosts **/
+    public int insertPosts(int userIdx, String content){
+        String insertPostsQuery = "INSERT INTO Post(userIdx, content) VALUES (?,?)";
+        Object[] insertPostParams = new Object[] {userIdx, content};
+        this.jdbcTemplate.update(insertPostsQuery,
+                insertPostParams);
+
+        // 방금 넣은 호스트의 postIdx를 클라이언트에게 전달
+        String lastInsertIdxQuery = "SELECT last_insert_id()"; // 가장 마지막에 들어간 idx를 리턴함
+        return this.jdbcTemplate.queryForObject(lastInsertIdxQuery, int.class);
+    }
+
+    /** 게시물 생성 - insertPostImgs **/
+    public int insertPostImgs(int postIdx, PostImgUrlsReq postImgUrlsReq){
+        String insertPostImgsQuery = "INSERT INTO PostImgUrl(postIdx, imgUrl) VALUES (?,?)";
+        Object[] insertPostImgsParams = new Object[] {postIdx, postImgUrlsReq.getImgUrl()};
+        this.jdbcTemplate.update(insertPostImgsQuery,
+                insertPostImgsParams);
+
+        // 방금 넣은 호스트의 postImgUrlIdx를 클라이언트에게 전달
+        String lastInsertIdxQuery = "SELECT last_insert_id()"; // 가장 마지막에 들어간 idx를 리턴함
+        return this.jdbcTemplate.queryForObject(lastInsertIdxQuery, int.class);
+    }
 }
