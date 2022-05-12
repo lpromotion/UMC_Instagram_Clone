@@ -114,4 +114,22 @@ public class PostDao {
         String lastInsertIdxQuery = "SELECT last_insert_id()"; // 가장 마지막에 들어간 idx를 리턴함
         return this.jdbcTemplate.queryForObject(lastInsertIdxQuery, int.class);
     }
+
+    /** 게시물 수정**/
+    public int updatePost(int postIdx, String content){
+        String updatePostQuery = "UPDATE Post SET content=? WHERE postIdx=?";
+        Object[] updatePostParams = new Object[] {content, postIdx};
+        return this.jdbcTemplate.update(updatePostQuery, updatePostParams);
+
+    }
+
+    /** 게시물 확인 validation **/
+    public int checkPostExist(int postIdx){
+        String checkPostExistQuery = "select exists(select postIdx from Post where postIdx = ?)";
+        int checkPostExistParams = postIdx;
+        return this.jdbcTemplate.queryForObject(checkPostExistQuery,
+                int.class,
+                checkPostExistParams);
+
+    }
 }

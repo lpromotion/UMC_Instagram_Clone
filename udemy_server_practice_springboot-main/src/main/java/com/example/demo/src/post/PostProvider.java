@@ -56,4 +56,13 @@ public class PostProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    /** 게시물 확인 validation **/
+    public int checkPostExist(int postIdx) throws BaseException{
+        try{
+            return postDao.checkPostExist(postIdx);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

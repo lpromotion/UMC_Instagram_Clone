@@ -42,31 +42,33 @@ com/example/demo/src/user/model/GetUserInfoRes.java
  com.example.demo.src.user.model.GetUserInfoRes
 com/example/demo/src/user/model/GetUserPostsRes.java
  com.example.demo.src.user.model.GetUserPostsRes
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
-com/example/demo/utils/JwtService.java
- com.example.demo.utils.JwtService
-com/example/demo/src/post/PostDao.java
- com.example.demo.src.post.PostDao
-com/example/demo/src/user/UserController.java
- com.example.demo.src.user.UserController
-com/example/demo/config/BaseResponse.java
- com.example.demo.config.BaseResponse
-com/example/demo/src/post/PostProvider.java
- com.example.demo.src.post.PostProvider
 com/example/demo/src/post/model/PostImgUrlsReq.java
  com.example.demo.src.post.model.PostImgUrlsReq
-com/example/demo/src/user/UserService.java
- com.example.demo.src.user.UserService
-com/example/demo/config/BaseResponseStatus.java
- com.example.demo.config.BaseResponseStatus
+com/example/demo/src/post/model/PostPostsRes.java
+ com.example.demo.src.post.model.PostPostsRes
 com/example/demo/src/post/model/PostPostsReq.java
  com.example.demo.src.post.model.PostPostsReq
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
 com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
 com/example/demo/src/post/PostController.java
  com.example.demo.src.post.PostController
-com/example/demo/src/post/model/PostPostsRes.java
- com.example.demo.src.post.model.PostPostsRes
+com/example/demo/src/user/UserService.java
+ com.example.demo.src.user.UserService
+com/example/demo/config/BaseResponseStatus.java
+ com.example.demo.config.BaseResponseStatus
+com/example/demo/config/BaseException.java
+ com.example.demo.config.BaseException
+com/example/demo/src/post/PostDao.java
+ com.example.demo.src.post.PostDao
+com/example/demo/utils/JwtService.java
+ com.example.demo.utils.JwtService
+com/example/demo/src/user/UserController.java
+ com.example.demo.src.user.UserController
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
+com/example/demo/config/BaseResponse.java
+ com.example.demo.config.BaseResponse
+com/example/demo/src/post/PostProvider.java
+ com.example.demo.src.post.PostProvider
+com/example/demo/src/post/model/PatchPostsReq.java
+ com.example.demo.src.post.model.PatchPostsReq

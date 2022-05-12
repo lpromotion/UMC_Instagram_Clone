@@ -70,5 +70,24 @@ public class PostController {
         }
     }
 
+    /** 게시물 수정 **/
+    @ResponseBody
+    @PatchMapping("/{postIdx}")
+    public BaseResponse<String> modifyPosts(@PathVariable ("postIdx") int postIdx, @RequestBody PatchPostsReq patchPostsReq) {
+        try{
+            // validation
+            if(patchPostsReq.getContent().length() > 450)
+            { // 게시글의 글자수가 많을 때
+                return new BaseResponse<>(BaseResponseStatus.POST_POSTS_INVALID_CONTENTS);
+            }
+
+            postService.modifyPost(patchPostsReq.getUserIdx(), postIdx, patchPostsReq);
+            String result = "회원 정보 수정을 완료하였습니다.";
+            return new BaseResponse<>(result);
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
 
 }

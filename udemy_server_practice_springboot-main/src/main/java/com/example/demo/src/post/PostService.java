@@ -3,6 +3,7 @@ package com.example.demo.src.post;
 import com.example.demo.config.BaseException;
 import com.example.demo.src.post.*;
 import com.example.demo.src.post.model.GetPostsRes;
+import com.example.demo.src.post.model.PatchPostsReq;
 import com.example.demo.src.post.model.PostPostsReq;
 import com.example.demo.src.post.model.PostPostsRes;
 import com.example.demo.utils.JwtService;
@@ -45,6 +46,33 @@ public class PostService {
             return new PostPostsRes(postIdx);
         }
         catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    /** 게시물 수정 **/
+    public void modifyPost(int userIdx, int postIdx, PatchPostsReq patchPostsReq) throws BaseException {
+        // validation
+        if(postProvider.checkUserExist(userIdx)==0)
+        {
+            throw new BaseException(USERS_EMPTY_USER_ID);
+        }
+        if(postProvider.checkPostExist(postIdx)==0)
+        {
+            throw new BaseException(POSTSS_EMPTY_POST_ID);
+        }
+
+        try{
+
+            int result = postDao.updatePost(postIdx, patchPostsReq.getContent()); // postIdx를 받아줌
+
+            if(result == 0){
+                throw new BaseException(MODIFY_FAIL_POST);
+            }
+
+            // void 함수여서 리턴값 필요없음음
+        }
+       catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }
     }
