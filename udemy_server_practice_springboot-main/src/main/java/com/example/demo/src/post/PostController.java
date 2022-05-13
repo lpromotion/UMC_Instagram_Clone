@@ -73,7 +73,7 @@ public class PostController {
     /** 게시물 수정 **/
     @ResponseBody
     @PatchMapping("/{postIdx}")
-    public BaseResponse<String> modifyPosts(@PathVariable ("postIdx") int postIdx, @RequestBody PatchPostsReq patchPostsReq) {
+    public BaseResponse<String> modifyPost(@PathVariable ("postIdx") int postIdx, @RequestBody PatchPostsReq patchPostsReq) {
         try{
             // validation
             if(patchPostsReq.getContent().length() > 450)
@@ -90,5 +90,19 @@ public class PostController {
         }
     }
 
+    /** 게시물 삭제 **/
+    @ResponseBody
+    @PatchMapping("/{postIdx}/status")
+    public BaseResponse<String> deletePost(@PathVariable ("postIdx") int postIdx) {
+        try{
+
+            postService.deletePost(postIdx);
+            String result = "삭제를 성공했습니다.";
+            return new BaseResponse<>(result);
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
 
 }
