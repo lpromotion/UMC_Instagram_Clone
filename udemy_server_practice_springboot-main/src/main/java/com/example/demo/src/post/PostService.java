@@ -76,4 +76,22 @@ public class PostService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    /** 게시물 삭제 **/
+    public void deletePost(int postIdx) throws BaseException {
+
+        try{
+
+            int result = postDao.deletePost(postIdx); // postIdx를 받아줌
+
+            if(result == 0){
+                throw new BaseException(DELETE_FAIL_POST);
+            }
+
+            // void 함수여서 리턴값 필요없음음
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

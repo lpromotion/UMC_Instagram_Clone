@@ -48,6 +48,8 @@ com/example/demo/src/post/model/PostPostsRes.java
  com.example.demo.src.post.model.PostPostsRes
 com/example/demo/src/post/model/PostPostsReq.java
  com.example.demo.src.post.model.PostPostsReq
+com/example/demo/src/post/model/PatchPostsReq.java
+ com.example.demo.src.post.model.PatchPostsReq
 com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
 com/example/demo/src/post/PostController.java
@@ -70,5 +72,3 @@ com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
-com/example/demo/src/post/model/PatchPostsReq.java
- com.example.demo.src.post.model.PatchPostsReq
