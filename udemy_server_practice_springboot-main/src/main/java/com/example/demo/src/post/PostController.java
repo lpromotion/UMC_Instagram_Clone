@@ -82,12 +82,13 @@ public class PostController {
             }
 
             postService.modifyPost(patchPostsReq.getUserIdx(), postIdx, patchPostsReq);
-            String result = "회원 정보 수정을 완료하였습니다.";
+            String result = "게시물 정보 수정을 완료하였습니다.";
             return new BaseResponse<>(result);
 
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
 
 }
