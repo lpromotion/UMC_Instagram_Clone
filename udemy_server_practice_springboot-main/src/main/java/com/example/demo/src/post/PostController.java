@@ -50,7 +50,7 @@ public class PostController {
     /** 게시물 생성 **/
     @ResponseBody
     @PostMapping("")
-    public BaseResponse<PostPostsRes> createPosts(@RequestBody PostPostsReq postPostsReq ) {
+    public BaseResponse<PostPostsRes> createPost(@RequestBody PostPostsReq postPostsReq ) {
         try{
             // validation
             if(postPostsReq.getContent().length() > 450)
@@ -62,7 +62,7 @@ public class PostController {
                 return new BaseResponse<>(BaseResponseStatus.POST_POSTS_EMPTY_IMGURL);
             }
 
-            PostPostsRes postPostsRes = postService.createPosts(postPostsReq.getUserIdx(), postPostsReq);
+            PostPostsRes postPostsRes = postService.createPost(postPostsReq.getUserIdx(), postPostsReq);
             return new BaseResponse<>(postPostsRes); // 생성된 게시물의 postIdx
 
         } catch(BaseException exception){

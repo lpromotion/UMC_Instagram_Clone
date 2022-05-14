@@ -92,7 +92,7 @@ public class PostDao {
     }
 
     /** 게시물 생성 - insertPosts **/
-    public int insertPosts(int userIdx, String content){
+    public int insertPost(int userIdx, String content){
         String insertPostsQuery = "INSERT INTO Post(userIdx, content) VALUES (?,?)";
         Object[] insertPostParams = new Object[] {userIdx, content};
         this.jdbcTemplate.update(insertPostsQuery,

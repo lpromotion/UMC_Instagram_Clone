@@ -34,11 +34,11 @@ public class PostService {
     }
 
     /** 게시물 생성 **/
-    public PostPostsRes createPosts(int userIdx, PostPostsReq postPostsReq) throws BaseException {
+    public PostPostsRes createPost(int userIdx, PostPostsReq postPostsReq) throws BaseException {
 
         try{
 
-            int postIdx = postDao.insertPosts(userIdx, postPostsReq.getContent()); // postIdx를 받아줌
+            int postIdx = postDao.insertPost(userIdx, postPostsReq.getContent()); // postIdx를 받아줌
             for(int i=0; i<postPostsReq.getPostImgUrls().size(); i++){
                 postDao.insertPostImgs(postIdx, postPostsReq.getPostImgUrls().get(i));
             }
