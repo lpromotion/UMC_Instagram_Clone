@@ -18,7 +18,7 @@ public class AuthDao {
     }
 
     public User getPwd(PostLoginReq postLoginReq){
-        String getPwdQuery = "select userIdx, name, nickname, email, pwd from User where email=?";
+        String getPwdQuery = "select userIdx, name, nickName, email, pwd from User where email=?";
         String getPwdParam = postLoginReq.getEmail();
 
         return this.jdbcTemplate.queryForObject(getPwdQuery, // 리스트면 query, 리스트가 아니면 queryForObject
