@@ -12,5 +12,5 @@ public class PostUserReq {
     private String name;
     private String pwd;
     private String birth;
-    private String nickname;
+    private String nickName;
 }

@@ -50,8 +50,13 @@ public class PostController {
     /** 게시물 생성 **/
     @ResponseBody
     @PostMapping("")
-    public BaseResponse<PostPostsRes> createPost(@RequestBody PostPostsReq postPostsReq ) {
+    public BaseResponse<PostPostsRes> createPosts(@RequestBody PostPostsReq postPostsReq ) {
         try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            if(postPostsReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
+            }
+
             // validation
             if(postPostsReq.getContent().length() > 450)
             { // 게시글의 글자수가 많을 때

@@ -98,13 +98,13 @@ public class UserDao {
     }
 
     public int createUser(PostUserReq postUserReq){
-        String createUserQuery = "insert into User (email, name, pwd, birth, nickname) VALUES (?,?,?,?,?)";
+        String createUserQuery = "insert into User (email,name,pwd,birth,nickName) VALUES (?,?,?,?,?)";
         Object[] createUserParams = new Object[]{
                 postUserReq.getEmail(),
                 postUserReq.getName(),
                 postUserReq.getPwd(),
                 postUserReq.getBirth(),
-                postUserReq.getNickname()};
+                postUserReq.getNickName()};
         this.jdbcTemplate.update(createUserQuery, createUserParams);
 
         String lastInserIdQuery = "select last_insert_id()";
