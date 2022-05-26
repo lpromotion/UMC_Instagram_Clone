@@ -53,11 +53,11 @@ public class PostService {
     /** 게시물 수정 **/
     public void modifyPost(int userIdx, int postIdx, PatchPostsReq patchPostsReq) throws BaseException {
         // validation
-        if(postProvider.checkUserExist(userIdx)==0)
+        if(postProvider.checkUserExist(userIdx)==0) // 유저가 존재하는지
         {
             throw new BaseException(USERS_EMPTY_USER_ID);
         }
-        if(postProvider.checkPostExist(postIdx)==0)
+        if(postProvider.checkPostExist(postIdx)==0) // 게시물이 존재하는지
         {
             throw new BaseException(POSTSS_EMPTY_POST_ID);
         }

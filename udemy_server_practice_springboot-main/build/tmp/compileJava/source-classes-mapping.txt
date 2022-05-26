@@ -32,8 +32,8 @@ com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
-com/example/demo/src/post/PostService.java
- com.example.demo.src.post.PostService
+com/example/demo/src/auth/AuthProvider.java
+ com.example.demo.src.auth.AuthProvider
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/src/user/model/GetUserPostsRes.java
@@ -56,8 +56,8 @@ com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/post/model/GetPostImgRes.java
  com.example.demo.src.post.model.GetPostImgRes
-com/example/demo/src/post/PostController.java
- com.example.demo.src.post.PostController
+com/example/demo/src/auth/AuthDao.java
+ com.example.demo.src.auth.AuthDao
 com/example/demo/src/post/model/PostImgUrlsReq.java
  com.example.demo.src.post.model.PostImgUrlsReq
 com/example/demo/src/user/model/DeleteUserRes.java
@@ -82,7 +82,7 @@ com/example/demo/src/auth/AuthController.java
  com.example.demo.src.auth.AuthController
 com/example/demo/src/auth/AuthService.java
  com.example.demo.src.auth.AuthService
-com/example/demo/src/auth/AuthDao.java
- com.example.demo.src.auth.AuthDao
-com/example/demo/src/auth/AuthProvider.java
- com.example.demo.src.auth.AuthProvider
+com/example/demo/src/post/PostService.java
+ com.example.demo.src.post.PostService
+com/example/demo/src/post/PostController.java
+ com.example.demo.src.post.PostController

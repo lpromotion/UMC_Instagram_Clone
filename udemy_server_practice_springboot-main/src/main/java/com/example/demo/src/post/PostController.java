@@ -80,6 +80,12 @@ public class PostController {
     @PatchMapping("/{postIdx}")
     public BaseResponse<String> modifyPost(@PathVariable ("postIdx") int postIdx, @RequestBody PatchPostsReq patchPostsReq) {
         try{
+            // jwt 토큰 검사
+            int userIdxByJwt = jwtService.getUserIdx();
+            if(patchPostsReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
+            }
+
             // validation
             if(patchPostsReq.getContent().length() > 450)
             { // 게시글의 글자수가 많을 때
