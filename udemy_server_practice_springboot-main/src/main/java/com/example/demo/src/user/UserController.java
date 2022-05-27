@@ -2,6 +2,7 @@ package com.example.demo.src.user;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
+import com.example.demo.config.BaseResponseStatus;
 import com.example.demo.src.user.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
@@ -114,27 +115,23 @@ public class UserController {
     }
 
     /**
-     * 유저정보변경 API
+     * 프로필 수정 API
      * [PATCH] /users/:userIdx
      * @return BaseResponse<String>
      */
     @ResponseBody
     @PatchMapping("/{userIdx}") // (PATCH) 127.0.0.1:9000/users/:userIdx
-    public BaseResponse<String> modifyUserName(@PathVariable("userIdx") int userIdx, @RequestBody User user){
+    public BaseResponse<String> modifyUserName(@PathVariable("userIdx") int userIdx, @RequestBody PatchUserReq patchUserReq){
         try {
-            /* TODO: jwt는 다음주차에서 배울 내용입니다!
-            jwt에서 idx 추출.
+            // jwt 토큰 검사
             int userIdxByJwt = jwtService.getUserIdx();
-            userIdx와 접근한 유저가 같은지 확인
             if(userIdx != userIdxByJwt){
-                return new BaseResponse<>(INVALID_USER_JWT);
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
             }
-            */
 
-            PatchUserReq patchUserReq = new PatchUserReq(userIdx,user.getNickName());
-            userService.modifyUserName(patchUserReq);
+            userService.modifyUserInfo(userIdx, patchUserReq);
 
-            String result = "";
+            String result = "회원정보 수정을 완료하였습니다.";
         return new BaseResponse<>(result);
         } catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));

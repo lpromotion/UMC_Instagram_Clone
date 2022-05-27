@@ -58,11 +58,12 @@ public class UserService {
         }
     }
 
-    public void modifyUserName(PatchUserReq patchUserReq) throws BaseException {
+    /** 회원정보 수정 **/
+    public void modifyUserInfo(int userIdx, PatchUserReq patchUserReq) throws BaseException {
         try{
-            int result = userDao.modifyUserName(patchUserReq);
+            int result = userDao.modifyUserInfo(userIdx, patchUserReq);
             if(result == 0){
-                throw new BaseException(MODIFY_FAIL_USERNAME);
+                throw new BaseException(MODIFY_FAIL_USERINFO);
             }
         } catch(Exception exception){
             throw new BaseException(DATABASE_ERROR);

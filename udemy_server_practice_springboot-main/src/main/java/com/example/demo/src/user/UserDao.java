@@ -130,11 +130,20 @@ public class UserDao {
 
     }
 
-    public int modifyUserName(PatchUserReq patchUserReq){
-        String modifyUserNameQuery = "update User set nickName = ? where userIdx = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getNickName(), patchUserReq.getUserIdx()};
+    /** 회원정보 수정 **/
+    public int modifyUserInfo(int userIdx, PatchUserReq patchUserReq){
+        String modifyUserInfoQuery = "update User \n" +
+                "set name=?, profileImgUrl=?, nickName = ?, website=?, introduce=?\n" +
+                "where userIdx = ?";
+        Object[] modifyUserInfoParams = new Object[]{
+                patchUserReq.getName(),
+                patchUserReq.getProfileImgUrl(),
+                patchUserReq.getNickName(),
+                patchUserReq.getWebsite(),
+                patchUserReq.getIntroduce(),
+                userIdx};
 
-        return this.jdbcTemplate.update(modifyUserNameQuery,modifyUserNameParams);
+        return this.jdbcTemplate.update(modifyUserInfoQuery,modifyUserInfoParams);
     }
 
 
