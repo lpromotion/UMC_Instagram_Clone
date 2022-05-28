@@ -37,10 +37,12 @@ public class PostController {
     /** 게시물 리스트 조회 **/
     @ResponseBody
     @GetMapping("")
-    public BaseResponse<List<GetPostsRes>> getPosts(@RequestParam int userIdx) {
+    public BaseResponse<List<GetPostsRes>> getPosts() {
         try{
+            // jwt 토큰에서 userIdx 추출
+            int userIdxByJwt = jwtService.getUserIdx();
 
-            List<GetPostsRes> getPostsRes = postProvider.retrievePosts(userIdx, userIdx);
+            List<GetPostsRes> getPostsRes = postProvider.retrievePosts(userIdxByJwt);
             return new BaseResponse<>(getPostsRes);
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));

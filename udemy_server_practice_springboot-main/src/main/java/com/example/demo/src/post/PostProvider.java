@@ -30,16 +30,16 @@ public class PostProvider {
 
 
     /** 게시물 리스트 조회 **/
-    public List<GetPostsRes> retrievePosts(int userIdxByJwt, int userIdx) throws BaseException {
+    public List<GetPostsRes> retrievePosts(int userIdxByJwt) throws BaseException {
 
-        if(checkUserExist(userIdx) == 0){
+        if(checkUserExist(userIdxByJwt) == 0){
             throw new BaseException(USERS_EMPTY_USER_ID);
         }
 
 
         try{
 
-            List<GetPostsRes> getPosts = postDao.selectPosts(userIdx);
+            List<GetPostsRes> getPosts = postDao.selectPosts(userIdxByJwt);
 
             return getPosts;
         }
