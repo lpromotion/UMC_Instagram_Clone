@@ -70,4 +70,22 @@ public class UserService {
         }
     }
 
+    /** 유저 삭제 **/
+    public void deleteUser(int userIdx) throws BaseException {
+
+        try{
+
+            int result = userDao.deleteUser(userIdx); // userIdx 받아줌
+
+            if(result == 0){
+                throw new BaseException(DELETE_FAIL_POST);
+            }
+
+            // void 함수여서 리턴값 필요없음음
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
 }

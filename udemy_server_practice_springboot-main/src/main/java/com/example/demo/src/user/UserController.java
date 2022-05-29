@@ -138,4 +138,24 @@ public class UserController {
         }
     }
 
+    /** 유저 삭제 **/
+    @ResponseBody
+    @PatchMapping("/{userIdx}/status")
+    public BaseResponse<String> deletePost(@PathVariable ("userIdx") int userIdx) {
+        try{
+            // jwt 토큰 검사
+            int userIdxByJwt = jwtService.getUserIdx();
+            if(userIdx != userIdxByJwt){
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
+            }
+
+            userService.deleteUser(userIdx);
+            String result = "유저 삭제를 성공했습니다.";
+            return new BaseResponse<>(result);
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
 }
