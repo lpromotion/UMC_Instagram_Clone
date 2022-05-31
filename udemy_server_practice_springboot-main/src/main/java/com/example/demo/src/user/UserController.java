@@ -69,8 +69,12 @@ public class UserController {
     @GetMapping("/{userIdx}")
     public BaseResponse<GetUserFeedRes> getUserFeed(@PathVariable("userIdx")int userIdx) {
         try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            if(userIdx != userIdxByJwt){
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
+            }
 
-            GetUserFeedRes getUserFeedRes = userProvider.retrieveUserFeed(userIdx, userIdx);
+            GetUserFeedRes getUserFeedRes = userProvider.retrieveUserFeed(userIdxByJwt, userIdx);
             return new BaseResponse<>(getUserFeedRes);
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));

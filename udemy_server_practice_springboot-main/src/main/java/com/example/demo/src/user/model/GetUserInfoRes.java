@@ -13,7 +13,7 @@ public class GetUserInfoRes {
     private String name;
     private String profileImgUrl;
     private String website;
-    private String Introduction;
+    private String Introduce;
     private int followerCount;
     private int followingCount;
     private int postCount;

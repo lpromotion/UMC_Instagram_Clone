@@ -26,13 +26,13 @@ public class UserDao {
                 "       u.name as name,\n" +
                 "       u.profileImgUrl as profileImgUrl,\n" +
                 "       u.website as website,\n" +
-                "       u.introduce as introduction,\n" +
+                "       u.introduce as introduce,\n" +
                 "       If(followerCount is null, 0, followerCount) as followerCount,\n" +
                 "       If(followingCount is null, 0, followingCount) as followingCount,\n" +
                 "       If(postCount is null, 0, postCount) as postCount\n" +
                 "FROM User as u\n" +
                 "    left join(select userIdx, count(postIdx) as postCount from Post where status = 'ACTIVE' group by userIdx)\n" +
-                "        p on p.userIdx - u.userIdx\n" +
+                "        p on p.userIdx = u.userIdx\n" +
                 "    left join(select followerIdx, count(followIdx) as followerCount from Follow where status = 'ACTIVE' group by followerIdx)\n" +
                 "        fc on fc.followerIdx = u.userIdx\n" +
                 "    left join(select followingIdx, count(followIdx) as followingCount from Follow where status = 'ACTIVE' group by followingIdx)\n" +
@@ -45,7 +45,7 @@ public class UserDao {
                         rs.getString("name"),
                         rs.getString("profileImgUrl"),
                         rs.getString("website"),
-                        rs.getString("introduction"),
+                        rs.getString("introduce"),
                         rs.getInt("followerCount"),
                         rs.getInt("followingCount"),
                         rs.getInt("postCount")

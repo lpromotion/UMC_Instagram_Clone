@@ -41,7 +41,6 @@ public class UserProvider {
             throw new BaseException(USERS_EMPTY_USER_ID);
         }
 
-
         try{
             if(userIdxByJwt != userIdx)
                 _isMyFeed = false;
