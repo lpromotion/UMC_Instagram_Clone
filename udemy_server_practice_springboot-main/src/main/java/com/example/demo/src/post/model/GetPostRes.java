@@ -1,7 +1,5 @@
 package com.example.demo.src.post.model;
 /** 게시글을 반환하는 객체 **/
-import com.example.demo.src.user.model.GetUserInfoRes;
-import com.example.demo.src.user.model.GetUserPostsRes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class GetPostsRes {
-
+public class GetPostRes {
     private int postIdx;
     private int userIdx;
     private String nickName;

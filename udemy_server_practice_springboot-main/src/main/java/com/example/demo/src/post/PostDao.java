@@ -81,6 +81,66 @@ public class PostDao {
                 ), selectPostsParam);
     }
 
+    /** 게시물 조회 **/
+    public GetPostRes selectPost(int userIdxByJwt, int postIdx){
+        String selectPostQuery =
+                "SELECT p.postIdx as postIdx,\n" +
+                        "       u.userIdx as userIdx,\n" +
+                        "       u.nickName as nickName,\n" +
+                        "       u.profileImgUrl as profileImgUrl,\n" +
+                        "       p.content as content,\n" +
+                        "       IF(postLikeCount is null, 0, postLikeCount) as postLikeCount,\n" +
+                        "       IF(commentCount is null, 0, commentCount) as commentCount,\n" +
+                        "       case\n" +
+                        "            when timestampdiff(second, p.updatedAt, current_timestamp) < 60\n" +
+                        "                then concat(timestampdiff(second, p.updatedAt, current_timestamp), '초 전')\n" +
+                        "           when timestampdiff(minute , p.updatedAt, current_timestamp) < 60\n" +
+                        "                then concat(timestampdiff(minute, p.updatedAt, current_timestamp), '분 전')\n" +
+                        "            when timestampdiff(hour , p.updatedAt, current_timestamp) < 24\n" +
+                        "                then concat(timestampdiff(hour, p.updatedAt, current_timestamp), '시간 전')\n" +
+                        "            when timestampdiff(day , p.updatedAt, current_timestamp) < 365\n" +
+                        "                then concat(timestampdiff(day, p.updatedAt, current_timestamp), '일 전')\n" +
+                        "            else timestampdiff(year , p.updatedAt, current_timestamp)\n" +
+                        "        end as updatedAt,\n" +
+                        "       IF(pl.status = 'ACTIVE' and pl.userIdx = ?, 'Y', 'N') as likeOrNot\n" +
+                        "FROM Post as p\n" +
+                        "    join User as u on u.userIdx = p.userIdx\n" +
+                        "    left join (select postIdx, userIdx, count(postLikeIdx) as postLikeCount\n" +
+                        "        from PostLike\n" +
+                        "        where status = 'ACTIVE'\n" +
+                        "        group by postIdx) plc on plc.postIdx = p.postIdx\n" +
+                        "    left join (select postIdx, count(commentIdx) as commentCount\n" +
+                        "        from Comment\n" +
+                        "        WHERE status = 'ACTIVE'\n" +
+                        "        group by postIdx) c on c.postIdx = p.postIdx\n" +
+                        "    left join PostLike as pl on pl.postIdx = p.postIdx\n" +
+                        "WHERE p.postIdx = ? and p.status = 'ACTIVE'";
+        Object[] selectPostParam = new Object[] {userIdxByJwt, postIdx};
+        return this.jdbcTemplate.queryForObject(selectPostQuery, // 리스트면 query, 리스트가 아니면 queryForObject
+                (rs,rowNum) -> new GetPostRes(
+                        rs.getInt("postIdx"),
+                        rs.getInt("userIdx"),
+                        rs.getString("nickName"),
+                        rs.getString("profileImgUrl"),
+                        rs.getString("content"),
+                        rs.getInt("postLikeCount"),
+                        rs.getInt("commentCount"),
+                        rs.getString("updatedAt"),
+                        rs.getString("likeOrNot"),
+                        getPostImgRes = this.jdbcTemplate.query(
+                                "SELECT pi.postImgUrlIdx,\n" +
+                                        "       pi.imgUrl\n" +
+                                        "FROM PostImgUrl as pi\n" +
+                                        "    join Post as p on p.postIdx = pi.postIdx\n" +
+                                        "WHERE pi.status = 'ACTIVE' and p.postIdx = ?;",
+                                (rk, rownum) -> new GetPostImgRes(
+                                        rk.getInt("postImgUrlIdx"),
+                                        rk.getString("imgUrl")
+                                ), rs.getInt("postIdx")
+                        )
+                ), selectPostParam);
+    }
+
     /** 유저 확인 validation **/
     public int checkUserExist(int userIdx){
         String checkUserExistQuery = "select exists(select userIdx from User where userIdx = ?)";

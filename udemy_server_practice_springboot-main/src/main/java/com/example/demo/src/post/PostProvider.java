@@ -1,6 +1,7 @@
 package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.src.post.model.GetPostRes;
 import com.example.demo.src.post.model.GetPostsRes;
 import com.example.demo.src.post.*;
 import com.example.demo.utils.JwtService;
@@ -42,6 +43,25 @@ public class PostProvider {
             List<GetPostsRes> getPosts = postDao.selectPosts(userIdxByJwt);
 
             return getPosts;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    /** 게시물 조회 **/
+    public GetPostRes retrievePost(int userIdxByJwt, int postIdx) throws BaseException {
+
+        if(checkUserExist(userIdxByJwt) == 0){
+            throw new BaseException(USERS_EMPTY_USER_ID);
+        }
+
+
+        try{
+
+            GetPostRes getPost = postDao.selectPost(userIdxByJwt, postIdx);
+
+            return getPost;
         }
         catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);

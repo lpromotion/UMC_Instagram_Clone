@@ -49,6 +49,21 @@ public class PostController {
         }
     }
 
+    /** 게시물 조회 **/
+    @ResponseBody
+    @GetMapping("/{postIdx}")
+    public BaseResponse<GetPostRes> getPost(@PathVariable ("postIdx") int postIdx) {
+        try{
+            // jwt 토큰에서 userIdx 추출
+            int userIdxByJwt = jwtService.getUserIdx();
+
+            GetPostRes getPostRes = postProvider.retrievePost(userIdxByJwt, postIdx);
+            return new BaseResponse<>(getPostRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
     /** 게시물 생성 **/
     @ResponseBody
     @PostMapping("")
