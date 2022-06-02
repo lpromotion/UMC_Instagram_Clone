@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="11ad780d-39a4-4e04-92cd-6fb5850d3791" name="udemy_server" url="http://udemy-server.site">
+        <fileTransfer accessType="SFTP" host="13.124.67.28" port="22" sshConfigId="1ff5a791-78d0-4e45-95a0-020fb9133e6a" sshConfig="ubuntu@13.124.67.28:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
