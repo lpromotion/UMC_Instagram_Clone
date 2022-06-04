@@ -38,6 +38,9 @@ public enum BaseResponseStatus {
     POST_POSTS_EMPTY_PASSWORD(false, 2030, "비밀번호를 입력해주세요."),
     POST_POSTS_INVALID_PASSWORD(false, 2031, "비밀번호 형식을 확인해주세요."),
 
+    POST_COMMENTS_INVALID_CONTENTS(false,2032,"내용을 200자 이내로 작성해주세요."),
+    POST_COMMENTS_EMPTY_CONTENTS(false,2033,"내용을 입력해주세요."),
+
 
 
     /**

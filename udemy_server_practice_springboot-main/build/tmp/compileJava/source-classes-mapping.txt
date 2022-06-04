@@ -1,5 +1,5 @@
-com/example/demo/src/post/PostService.java
- com.example.demo.src.post.PostService
+com/example/demo/src/user/model/PatchUserReq.java
+ com.example.demo.src.user.model.PatchUserReq
 com/example/demo/src/post/model/PostImgUrlsReq.java
  com.example.demo.src.post.model.PostImgUrlsReq
 com/example/demo/utils/SHA256.java
@@ -44,8 +44,8 @@ com/example/demo/src/auth/model/User.java
  com.example.demo.src.auth.model.User
 com/example/demo/src/auth/model/PostLoginReq.java
  com.example.demo.src.auth.model.PostLoginReq
-com/example/demo/src/post/PostProvider.java
- com.example.demo.src.post.PostProvider
+com/example/demo/src/user/model/GetUserFeedRes.java
+ com.example.demo.src.user.model.GetUserFeedRes
 com/example/demo/src/user/model/PostUserRes.java
  com.example.demo.src.user.model.PostUserRes
 com/example/demo/src/post/PostDao.java
@@ -58,33 +58,45 @@ com/example/demo/src/post/model/GetPostImgRes.java
  com.example.demo.src.post.model.GetPostImgRes
 com/example/demo/src/auth/AuthDao.java
  com.example.demo.src.auth.AuthDao
-com/example/demo/src/post/PostController.java
- com.example.demo.src.post.PostController
-com/example/demo/src/post/model/GetPostRes.java
- com.example.demo.src.post.model.GetPostRes
-com/example/demo/src/auth/AuthService.java
- com.example.demo.src.auth.AuthService
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
-com/example/demo/config/BaseResponse.java
- com.example.demo.config.BaseResponse
-com/example/demo/src/user/model/PatchUserReq.java
- com.example.demo.src.user.model.PatchUserReq
-com/example/demo/src/auth/AuthController.java
- com.example.demo.src.auth.AuthController
-com/example/demo/config/BaseResponseStatus.java
- com.example.demo.config.BaseResponseStatus
-com/example/demo/utils/JwtService.java
- com.example.demo.utils.JwtService
-com/example/demo/src/user/model/GetUserFeedRes.java
- com.example.demo.src.user.model.GetUserFeedRes
-com/example/demo/src/user/model/GetUserInfoRes.java
- com.example.demo.src.user.model.GetUserInfoRes
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
-com/example/demo/src/user/UserService.java
- com.example.demo.src.user.UserService
+com/example/demo/src/post/model/GetPostRes.java
+ com.example.demo.src.post.model.GetPostRes
+com/example/demo/src/user/model/GetUserInfoRes.java
+ com.example.demo.src.user.model.GetUserInfoRes
+com/example/demo/src/post/PostService.java
+ com.example.demo.src.post.PostService
+com/example/demo/src/post/PostController.java
+ com.example.demo.src.post.PostController
+com/example/demo/src/comment/model/PostCommentRes.java
+ com.example.demo.src.comment.model.PostCommentRes
+com/example/demo/src/comment/CommentDao.java
+ com.example.demo.src.comment.CommentDao
+com/example/demo/src/auth/AuthService.java
+ com.example.demo.src.auth.AuthService
+com/example/demo/src/comment/CommentService.java
+ com.example.demo.src.comment.CommentService
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
+com/example/demo/src/comment/CommentController.java
+ com.example.demo.src.comment.CommentController
+com/example/demo/config/BaseResponse.java
+ com.example.demo.config.BaseResponse
+com/example/demo/src/post/PostProvider.java
+ com.example.demo.src.post.PostProvider
+com/example/demo/src/comment/CommentProvider.java
+ com.example.demo.src.comment.CommentProvider
+com/example/demo/src/comment/model/PostCommentReq.java
+ com.example.demo.src.comment.model.PostCommentReq
+com/example/demo/src/auth/AuthController.java
+ com.example.demo.src.auth.AuthController
+com/example/demo/src/user/UserService.java
+ com.example.demo.src.user.UserService
+com/example/demo/config/BaseResponseStatus.java
+ com.example.demo.config.BaseResponseStatus
+com/example/demo/config/BaseException.java
+ com.example.demo.config.BaseException
+com/example/demo/utils/JwtService.java
+ com.example.demo.utils.JwtService
 com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider

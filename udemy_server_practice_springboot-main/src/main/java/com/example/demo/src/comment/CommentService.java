@@ -2,9 +2,7 @@ package com.example.demo.src.comment;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.src.comment.*;
-import com.example.demo.src.post.PostDao;
-import com.example.demo.src.post.PostProvider;
-import com.example.demo.src.post.model.*;
+import com.example.demo.src.comment.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,5 +27,19 @@ public class CommentService {
         this.commentDao = commentDao;
         this.commentProvider = commentProvider;
         this.jwtService = jwtService;
+    }
+
+    /** 댓글 생성 **/
+    public PostCommentRes createComment(int userIdxByJwt, PostCommentReq postCommentReq) throws BaseException {
+
+        try{
+
+            int commentIdx = commentDao.createComment(userIdxByJwt, postCommentReq); // commentIdx를 받아줌
+
+            return new PostCommentRes(commentIdx);
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 }
