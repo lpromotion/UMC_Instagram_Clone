@@ -27,4 +27,22 @@ public class CommentProvider {
         this.commentDao = commentDao;
         this.jwtService = jwtService;
     }
+
+    /** 유저 확인 validation **/
+    public int checkUserExist(int userIdx) throws BaseException{
+        try{
+            return commentDao.checkUserExist(userIdx);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    /** 댓글 확인 validation **/
+    public int checkCommentExist(int commentIdx) throws BaseException{
+        try{
+            return commentDao.checkCommentExist(commentIdx);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

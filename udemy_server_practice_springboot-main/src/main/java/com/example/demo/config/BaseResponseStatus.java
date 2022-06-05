@@ -41,6 +41,8 @@ public enum BaseResponseStatus {
     POST_COMMENTS_INVALID_CONTENTS(false,2032,"내용을 200자 이내로 작성해주세요."),
     POST_COMMENTS_EMPTY_CONTENTS(false,2033,"내용을 입력해주세요."),
 
+    COMMENTS_EMPTY_COMMENT_ID(false, 2034, "댓글 아이디 값을 확인해주세요."),
+
 
 
     /**
@@ -55,6 +57,8 @@ public enum BaseResponseStatus {
 
     MODIFY_FAIL_POST(false,3015,"게시물 수정을 실패했습니다."),
     DELETE_FAIL_POST(false,3016,"게시물 삭제를 실패했습니다."),
+
+    MODIFY_FAIL_COMMENT(false,3017,"댓글 수정을 실패했습니다."),
 
 
 

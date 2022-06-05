@@ -4,6 +4,7 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.config.BaseResponseStatus;
 import com.example.demo.src.comment.model.*;
+import com.example.demo.src.post.model.PatchPostsReq;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +48,36 @@ public class CommentController {
 
             PostCommentRes postCommentRes = commentService.createComment(userIdxByJwt, postCommentReq);
             return new BaseResponse<>(postCommentRes); // 생성된 게시물의 postIdx
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    /** 댓글 수정 **/
+    @ResponseBody
+    @PatchMapping("/{commentIdx}")
+    public BaseResponse<String> modifyPost(@PathVariable ("commentIdx") int commentIdx, @RequestBody PatchCommentReq patchCommentReq) {
+        try{
+            // jwt 토큰 검사
+            int userIdxByJwt = jwtService.getUserIdx();
+            if(patchCommentReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(BaseResponseStatus.INVALID_USER_JWT);
+            }
+
+            // validation
+            if(patchCommentReq.getContent().length() > 200)
+            { // 댓글의 글자수가 많을 때
+                return new BaseResponse<>(BaseResponseStatus.POST_COMMENTS_INVALID_CONTENTS);
+            }
+            if(patchCommentReq.getContent().length() < 1)
+            { // 댓글을 쓰지 않았을 때
+                return new BaseResponse<>(BaseResponseStatus.POST_COMMENTS_EMPTY_CONTENTS);
+            }
+
+            commentService.modifyComment(userIdxByJwt, commentIdx, patchCommentReq);
+            String result = "댓글 수정을 완료하였습니다.";
+            return new BaseResponse<>(result);
 
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));

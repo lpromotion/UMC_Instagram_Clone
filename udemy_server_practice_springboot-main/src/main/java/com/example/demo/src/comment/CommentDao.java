@@ -32,4 +32,32 @@ public class CommentDao {
         String lastInsertIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery,int.class);
     }
+
+    /** 유저 확인 validation **/
+    public int checkUserExist(int userIdx){
+        String checkUserExistQuery = "select exists(select userIdx from User where userIdx = ?)";
+        int checkUserExistParams = userIdx;
+        return this.jdbcTemplate.queryForObject(checkUserExistQuery,
+                int.class,
+                checkUserExistParams);
+
+    }
+
+    /** 게시물 확인 validation **/
+    public int checkCommentExist(int commentIdx){
+        String checkPostExistQuery = "select exists(select commentIdx from Comment where commentIdx = ?)";
+        int checkCommentExistParams = commentIdx;
+        return this.jdbcTemplate.queryForObject(checkPostExistQuery,
+                int.class,
+                checkCommentExistParams);
+
+    }
+
+    /** 댓글 수정 **/
+    public int updateComment(int commentIdx, String content){
+        String updateCommentQuery = "UPDATE Comment SET content=? WHERE commentIdx=?";
+        Object[] updateCommentParams = new Object[] {content, commentIdx};
+        return this.jdbcTemplate.update(updateCommentQuery, updateCommentParams);
+
+    }
 }
