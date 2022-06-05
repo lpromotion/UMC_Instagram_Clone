@@ -68,6 +68,8 @@ com/example/demo/src/comment/model/PostCommentRes.java
  com.example.demo.src.comment.model.PostCommentRes
 com/example/demo/src/comment/model/PostCommentReq.java
  com.example.demo.src.comment.model.PostCommentReq
+com/example/demo/src/comment/model/PatchCommentReq.java
+ com.example.demo.src.comment.model.PatchCommentReq
 com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
 com/example/demo/src/post/PostController.java
@@ -88,8 +90,6 @@ com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
 com/example/demo/src/comment/CommentProvider.java
  com.example.demo.src.comment.CommentProvider
-com/example/demo/src/comment/model/PatchCommentReq.java
- com.example.demo.src.comment.model.PatchCommentReq
 com/example/demo/src/auth/AuthController.java
  com.example.demo.src.auth.AuthController
 com/example/demo/src/user/UserService.java

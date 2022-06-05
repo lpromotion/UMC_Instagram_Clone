@@ -59,6 +59,7 @@ public enum BaseResponseStatus {
     DELETE_FAIL_POST(false,3016,"게시물 삭제를 실패했습니다."),
 
     MODIFY_FAIL_COMMENT(false,3017,"댓글 수정을 실패했습니다."),
+    DELETE_FAIL_COMMENT(false,3018,"댓글 삭제를 실패했습니다."),
 
 
 

@@ -70,4 +70,22 @@ public class CommentService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    /** 댓글 삭제 **/
+    public void deleteComment(int commentIdx) throws BaseException {
+
+        try{
+
+            int result = commentDao.deleteComment(commentIdx); // commentIdx를 받아줌
+
+            if(result == 0){
+                throw new BaseException(DELETE_FAIL_COMMENT);
+            }
+
+            // void 함수여서 리턴값 필요없음
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

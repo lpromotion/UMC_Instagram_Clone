@@ -60,4 +60,12 @@ public class CommentDao {
         return this.jdbcTemplate.update(updateCommentQuery, updateCommentParams);
 
     }
+
+    /** 댓글 삭제 **/
+    public int deleteComment(int commentIdx){
+        String deleteCommentQuery = "UPDATE Comment SET status='INACTIVE' WHERE commentIdx=?";
+        Object[] deleteCommentParams = new Object[] {commentIdx};
+        return this.jdbcTemplate.update(deleteCommentQuery, deleteCommentParams);
+
+    }
 }
