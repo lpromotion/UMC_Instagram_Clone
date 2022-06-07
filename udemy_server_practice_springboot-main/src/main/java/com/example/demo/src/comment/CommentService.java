@@ -88,4 +88,18 @@ public class CommentService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    /** 댓글 좋아요 생성 **/
+    public PostCommentLikeRes createCommentLike(int userIdxByJwt, int commentIdx) throws BaseException {
+
+        try{
+
+            int commentLikeIdx = commentDao.createCommentLike(userIdxByJwt, commentIdx); // commentLikeIdx를 받아줌
+
+            return new PostCommentLikeRes(commentLikeIdx);
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

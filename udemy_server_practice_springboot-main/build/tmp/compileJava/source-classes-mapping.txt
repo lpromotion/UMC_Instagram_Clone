@@ -74,31 +74,33 @@ com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
 com/example/demo/src/post/PostController.java
  com.example.demo.src.post.PostController
-com/example/demo/src/comment/CommentDao.java
- com.example.demo.src.comment.CommentDao
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
 com/example/demo/src/auth/AuthService.java
  com.example.demo.src.auth.AuthService
-com/example/demo/src/comment/CommentService.java
- com.example.demo.src.comment.CommentService
+com/example/demo/utils/JwtService.java
+ com.example.demo.utils.JwtService
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
-com/example/demo/src/comment/CommentController.java
- com.example.demo.src.comment.CommentController
+com/example/demo/config/BaseException.java
+ com.example.demo.config.BaseException
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
-com/example/demo/src/comment/CommentProvider.java
- com.example.demo.src.comment.CommentProvider
+com/example/demo/config/BaseResponseStatus.java
+ com.example.demo.config.BaseResponseStatus
 com/example/demo/src/auth/AuthController.java
  com.example.demo.src.auth.AuthController
 com/example/demo/src/user/UserService.java
  com.example.demo.src.user.UserService
-com/example/demo/config/BaseResponseStatus.java
- com.example.demo.config.BaseResponseStatus
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
-com/example/demo/utils/JwtService.java
- com.example.demo.utils.JwtService
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
+com/example/demo/src/comment/model/PostCommentLikeRes.java
+ com.example.demo.src.comment.model.PostCommentLikeRes
+com/example/demo/src/comment/CommentDao.java
+ com.example.demo.src.comment.CommentDao
+com/example/demo/src/comment/CommentService.java
+ com.example.demo.src.comment.CommentService
+com/example/demo/src/comment/CommentController.java
+ com.example.demo.src.comment.CommentController
+com/example/demo/src/comment/CommentProvider.java
+ com.example.demo.src.comment.CommentProvider

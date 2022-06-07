@@ -68,4 +68,16 @@ public class CommentDao {
         return this.jdbcTemplate.update(deleteCommentQuery, deleteCommentParams);
 
     }
+
+    /** 댓글 좋아요 생성 **/
+    public int createCommentLike(int userIdxByJwt, int commentIdx){
+        String createCommentQuery = "insert into CommentLike (userIdx, commentIdx) VALUES (?,?)";
+        Object[] createCommentParams = new Object[]{
+                userIdxByJwt,
+                commentIdx};
+        this.jdbcTemplate.update(createCommentQuery, createCommentParams);
+
+        String lastInsertIdQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInsertIdQuery,int.class);
+    }
 }

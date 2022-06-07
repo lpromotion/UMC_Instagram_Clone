@@ -4,7 +4,6 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.config.BaseResponseStatus;
 import com.example.demo.src.comment.model.*;
-import com.example.demo.src.post.model.PatchPostsReq;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,6 +92,21 @@ public class CommentController {
             commentService.deleteComment(commentIdx);
             String result = "삭제를 성공했습니다.";
             return new BaseResponse<>(result);
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    /** 댓글 좋아요 생성 **/
+    @ResponseBody
+    @PostMapping("/like/{commentIdx}")
+    public BaseResponse<PostCommentLikeRes> createCommentLike(@PathVariable ("commentIdx") int commentIdx) {
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+
+            PostCommentLikeRes postCommentLikeRes = commentService.createCommentLike(userIdxByJwt, commentIdx);
+            return new BaseResponse<>(postCommentLikeRes); // 생성된 댓글 좋아요의 commentLikeIdx
 
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));
