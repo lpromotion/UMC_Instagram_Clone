@@ -112,4 +112,19 @@ public class CommentController {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
+    /** 댓글 좋아요 취소 **/
+    @ResponseBody
+    @PatchMapping("/like/{commentLikeIdx}/status")
+    public BaseResponse<String> deleteCommentLike(@PathVariable ("commentLikeIdx") int commentLikeIdx) {
+        try{
+
+            commentService.deleteCommentLike(commentLikeIdx);
+            String result = "댓글 좋아요 취소를 성공했습니다.";
+            return new BaseResponse<>(result);
+
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
 }

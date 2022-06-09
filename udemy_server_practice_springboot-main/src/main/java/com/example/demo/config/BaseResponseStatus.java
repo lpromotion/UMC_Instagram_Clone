@@ -61,6 +61,8 @@ public enum BaseResponseStatus {
     MODIFY_FAIL_COMMENT(false,3017,"댓글 수정을 실패했습니다."),
     DELETE_FAIL_COMMENT(false,3018,"댓글 삭제를 실패했습니다."),
 
+    DELETE_FAIL_COMMENTLIKE(false,3019," 댓글 좋아요 취소를 실패했습니다."),
+
 
 
     /**

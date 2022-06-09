@@ -102,4 +102,22 @@ public class CommentService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    /** 댓글 좋아요 취소 **/
+    public void deleteCommentLike(int commentLikeIdx) throws BaseException {
+
+        try{
+
+            int result = commentDao.deleteCommentLike(commentLikeIdx); // commentLikeIdx 받아줌
+
+            if(result == 0){
+                throw new BaseException(DELETE_FAIL_COMMENTLIKE);
+            }
+
+            // void 함수여서 리턴값 필요없음
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }

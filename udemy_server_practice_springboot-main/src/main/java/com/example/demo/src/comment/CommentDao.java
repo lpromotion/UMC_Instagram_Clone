@@ -80,4 +80,12 @@ public class CommentDao {
         String lastInsertIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery,int.class);
     }
+
+    /** 댓글 좋아요 취소 **/
+    public int deleteCommentLike(int commentLikeIdx){
+        String deleteCommentLikeQuery = "UPDATE CommentLike SET status='INACTIVE' WHERE commentLikeIdx=?";
+        Object[] deleteCommentLikeParams = new Object[] {commentLikeIdx};
+        return this.jdbcTemplate.update(deleteCommentLikeQuery, deleteCommentLikeParams);
+
+    }
 }
