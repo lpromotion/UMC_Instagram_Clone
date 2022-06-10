@@ -46,7 +46,7 @@ public class CommentController {
             }
 
             PostCommentRes postCommentRes = commentService.createComment(userIdxByJwt, postCommentReq);
-            return new BaseResponse<>(postCommentRes); // 생성된 게시물의 postIdx
+            return new BaseResponse<>(postCommentRes); // 생성된 댓글의 commentIdx
 
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));
